@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jude Principe | AI Automation Specialist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --surface: #111111;
+      --border: #1a1a1a;
+      --text: #e5e5e5;
+      --muted: #737373;
+      --accent: #3b82f6;
+      --accent-glow: rgba(59, 130, 246, 0.15);
+      --white: #fafafa;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* --- NAV --- */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+      backdrop-filter: blur(20px);
+      background: rgba(10, 10, 10, 0.8);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-links { display: flex; gap: 2rem; }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 400;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+
+    /* --- HERO --- */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 30% 40%, var(--accent-glow) 0%, transparent 50%);
+      animation: drift 20s ease-in-out infinite;
+    }
+
+    @keyframes drift {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(5%, 3%); }
+    }
+
+    .hero-content {
+      position: relative;
+      max-width: 720px;
+      text-align: center;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: 0.8rem;
+      color: var(--accent);
+      margin-bottom: 2rem;
+      background: var(--surface);
+    }
+
+    .tag .dot {
+      width: 6px;
+      height: 6px;
+      background: #22c55e;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+
+    h1 .gradient {
+      background: linear-gradient(135deg, var(--accent), #a855f7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: 1.125rem;
+      color: var(--muted);
+      max-width: 520px;
+      margin: 0 auto 2.5rem;
+      font-weight: 300;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 0.75rem 1.75rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+      font-family: inherit;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: #2563eb;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 30px rgba(59, 130, 246, 0.3);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--muted);
+      background: var(--surface);
+    }
+
+    /* --- SECTIONS --- */
+    section {
+      padding: 6rem 2rem;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+      font-weight: 500;
+    }
+
+    h2 {
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: -0.02em;
+      margin-bottom: 3rem;
+    }
+
+    /* --- TOOLS --- */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .tool-card {
+      padding: 1.5rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      transition: all 0.3s;
+    }
+
+    .tool-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(59, 130, 246, 0.08);
+    }
+
+    .tool-icon {
+      font-size: 1.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .tool-card h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.25rem;
+    }
+
+    .tool-card p {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* --- WORK / PROJECTS --- */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+
+    .project-card:hover {
+      border-color: #262626;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .project-img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      object-position: center top;
+      border-bottom: 1px solid var(--border);
+      display: block;
+    }
+
+    .project-info {
+      padding: 1.5rem;
+    }
+
+    .project-info h3 {
+      font-size: 1.05rem;
+      color: var(--white);
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .project-info p {
+      font-size: 0.825rem;
+      color: var(--muted);
+      line-height: 1.5;
+      margin-bottom: 0.75rem;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .project-tag {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      background: var(--accent-glow);
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    @media (max-width: 640px) {
+      .projects-grid { grid-template-columns: 1fr; }
+    }
+
+    /* --- SERVICES --- */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      padding: 2rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      transition: border-color 0.3s;
+    }
+
+    .service-card:hover { border-color: #262626; }
+
+    .service-num {
+      font-size: 0.75rem;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .service-card h3 {
+      font-size: 1.125rem;
+      color: var(--white);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .service-card p {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* --- EXPERIENCE --- */
+    .timeline { display: flex; flex-direction: column; gap: 2rem; }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .timeline-item:last-child { border-bottom: none; }
+
+    .timeline-date {
+      font-size: 0.8rem;
+      color: var(--muted);
+      padding-top: 0.2rem;
+    }
+
+    .timeline-content h3 {
+      font-size: 1.05rem;
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    .timeline-content .company {
+      font-size: 0.875rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-content p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .timeline-badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.7rem;
+      border-radius: 4px;
+      background: var(--accent-glow);
+      color: var(--accent);
+      font-weight: 500;
+      margin-top: 0.5rem;
+    }
+
+    /* --- CTA --- */
+    .cta-section {
+      text-align: center;
+      padding: 8rem 2rem;
+    }
+
+    .cta-section h2 {
+      margin-bottom: 1rem;
+      font-size: 2.5rem;
+    }
+
+    .cta-section p {
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+      font-size: 1.05rem;
+    }
+
+    /* --- FOOTER --- */
+    footer {
+      padding: 2rem;
+      text-align: center;
+      border-top: 1px solid var(--border);
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    footer a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    footer a:hover { color: var(--white); }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 640px) {
+      nav { padding: 1rem; }
+      .nav-links { gap: 1.25rem; }
+      .nav-links a { font-size: 0.8rem; }
+      section { padding: 4rem 1.25rem; }
+      .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 0.25rem;
+      }
+      .hero-cta { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-links">
+      <a href="#tools">Tools</a>
+      <a href="#work">Work</a>
+      <a href="#services">Services</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="tag">
+        <span class="dot"></span>
+        Available for projects
+      </div>
+      <h1>I build <span class="gradient">AI automations</span> that do the work for you.</h1>
+      <p class="hero-sub">
+        Automation Specialist turning repetitive tasks into intelligent workflows with n8n, Claude, and API integrations.
+      </p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn btn-primary">Work with me</a>
+        <a href="#services" class="btn btn-ghost">See what I do</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOOLS -->
+  <section id="tools">
+    <p class="section-label">Stack</p>
+    <h2>Tools I work with</h2>
+    <div class="tools-grid">
+      <div class="tool-card">
+        <div class="tool-icon">&#9000;</div>
+        <h3>n8n</h3>
+        <p>Workflow automation platform &mdash; my primary tool for building end-to-end automations.</p>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon">&#9672;</div>
+        <h3>Claude AI</h3>
+        <p>Anthropic's AI assistant &mdash; powering intelligent agents and content generation in my workflows.</p>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon">&#9881;</div>
+        <h3>API Integrations</h3>
+        <p>REST APIs, webhooks, and third-party connectors to link any platform.</p>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon">&#9733;</div>
+        <h3>OpenAI / GPT</h3>
+        <p>LLM-powered nodes for chat, image generation, and AI-driven decisions.</p>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon">&#8644;</div>
+        <h3>Zapier</h3>
+        <p>Additional automation layer for quick integrations and multi-platform triggers.</p>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon">&#128202;</div>
+        <h3>Data &amp; CRM</h3>
+        <p>Data entry, stewardship, and CRM management with precision and quality.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work">
+    <p class="section-label">Projects</p>
+    <h2>Built with n8n</h2>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <img src="images/Whatsapp automation.png" alt="WhatsApp Automation" class="project-img"
+          onerror="this.style.height='180px';this.style.background='linear-gradient(135deg,#1a1a2e,#16213e)';this.style.display='flex';">
+        <div class="project-info">
+          <h3>WhatsApp AI Assistant</h3>
+          <p>Multi-modal WhatsApp bot that handles text, audio, and image messages. Routes through a Switch node, transcribes voice with OpenAI Whisper, analyzes images, manages conversation memory with Redis, and responds via AI Agent.</p>
+          <div class="project-tags">
+            <span class="project-tag">WhatsApp</span>
+            <span class="project-tag">OpenAI</span>
+            <span class="project-tag">Redis</span>
+            <span class="project-tag">Whisper</span>
+            <span class="project-tag">AI Agent</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="images/AMSR video automation.png" alt="ASMR Video Creator" class="project-img"
+          onerror="this.style.height='180px';this.style.background='linear-gradient(135deg,#1a1a2e,#16213e)';this.style.display='flex';">
+        <div class="project-info">
+          <h3>ASMR Video Creator</h3>
+          <p>Automated content pipeline that generates AI prompts, tracks topics in Google Sheets, renders videos via external API with JWT auth, and uploads directly to YouTube on a schedule.</p>
+          <div class="project-tags">
+            <span class="project-tag">YouTube</span>
+            <span class="project-tag">Google Sheets</span>
+            <span class="project-tag">JWT Auth</span>
+            <span class="project-tag">Video API</span>
+            <span class="project-tag">Scheduled</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="images/Linkedin Autopost.png" alt="LinkedIn Autopost" class="project-img"
+          onerror="this.style.height='180px';this.style.background='linear-gradient(135deg,#1a1a2e,#16213e)';this.style.display='flex';">
+        <div class="project-info">
+          <h3>LinkedIn Autopost</h3>
+          <p>Scheduled workflow that generates posts with an AI Agent, hashes content for Redis-based duplicate detection, generates images with DALL-E, and auto-publishes to LinkedIn.</p>
+          <div class="project-tags">
+            <span class="project-tag">LinkedIn</span>
+            <span class="project-tag">DALL-E</span>
+            <span class="project-tag">Redis</span>
+            <span class="project-tag">AI Agent</span>
+            <span class="project-tag">Dedup</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="images/AI Chatbot.png" alt="AI Chatbot" class="project-img"
+          onerror="this.style.height='180px';this.style.background='linear-gradient(135deg,#1a1a2e,#16213e)';this.style.display='flex';">
+        <div class="project-info">
+          <h3>AI Chatbot</h3>
+          <p>Webhook-triggered conversational AI that receives POST requests, processes messages through an OpenAI-powered Agent, and returns structured JSON responses in real time.</p>
+          <div class="project-tags">
+            <span class="project-tag">Webhook</span>
+            <span class="project-tag">OpenAI</span>
+            <span class="project-tag">AI Agent</span>
+            <span class="project-tag">REST API</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <p class="section-label">What I do</p>
+    <h2>Services</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-num">01</div>
+        <h3>Workflow Automation</h3>
+        <p>Design and deploy n8n workflows that eliminate manual, repetitive tasks and scale your operations.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">02</div>
+        <h3>AI Agent Development</h3>
+        <p>Build intelligent agents using Claude and GPT models that handle conversations, generate content, and make decisions.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">03</div>
+        <h3>API &amp; System Integration</h3>
+        <p>Connect your existing tools through APIs and webhooks into a seamless, automated pipeline.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">04</div>
+        <h3>Process Optimization</h3>
+        <p>Audit your current workflows, identify bottlenecks, and implement automation that saves hours per week.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <p class="section-label">Background</p>
+    <h2>Experience</h2>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-date">2026 &mdash; Present</div>
+        <div class="timeline-content">
+          <h3>Automation Specialist</h3>
+          <div class="company">HudasFlow AI</div>
+          <p>Building AI-powered automation workflows using n8n, Zapier, and API integrations. Streamlining operations and creating end-to-end automated solutions.</p>
+          <span class="timeline-badge">n8n Certified</span>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2026 &mdash; Present</div>
+        <div class="timeline-content">
+          <h3>AI Automation Specialist</h3>
+          <div class="company">TechVAPhilippines</div>
+          <p>Designing integrations using n8n, APIs, and AI models. Delivering scalable automation solutions tailored to client needs.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2023 &mdash; 2026</div>
+        <div class="timeline-content">
+          <h3>Data Steward &amp; Quality Checker</h3>
+          <div class="company">Veeva Systems</div>
+          <p>2+ years managing data quality, CRM operations, and data entry processes. Awarded "Quality Champion" for data matching excellence.</p>
+          <span class="timeline-badge">Quality Champion Award</span>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2025</div>
+        <div class="timeline-content">
+          <h3>Inventory Specialist &amp; Intern</h3>
+          <div class="company">Laguna State Polytechnic University</div>
+          <p>Inventory management and administrative operations.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" id="contact">
+    <p class="section-label">Let's talk</p>
+    <h2>Ready to automate?</h2>
+    <p>Tell me what's eating your time. I'll build the workflow that fixes it.</p>
+    <div class="hero-cta">
+      <a href="https://www.linkedin.com/in/jude-principe-5162a11b0/" target="_blank" class="btn btn-primary">Message on LinkedIn</a>
+      <a href="https://www.upwork.com/freelancers/~015a50c86098d67813" target="_blank" class="btn btn-ghost">Hire on Upwork</a>
+      <a href="https://www.onlinejobs.ph/jobseekers/info/2302244" target="_blank" class="btn btn-ghost">OnlineJobs.ph</a>
+      <a href="mailto:principejude0@gmail.com" class="btn btn-ghost">Send an email</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/jude-principe-5162a11b0/" target="_blank">LinkedIn</a>
+      <a href="https://www.upwork.com/freelancers/~015a50c86098d67813" target="_blank">Upwork</a>
+      <a href="https://www.onlinejobs.ph/jobseekers/info/2302244" target="_blank">OnlineJobs.ph</a>
+    </div>
+    <p>&copy; 2026 Jude Principe. Built with purpose.</p>
+  </footer>
+
+</body>
+</html>
